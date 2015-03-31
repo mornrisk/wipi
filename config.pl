@@ -12,7 +12,7 @@
     },
     protocol  => +{
         is_stream     => 1,
-        command       => '',
+        command       => '',    # command mode is not currently supported
         delimiter     => "\n",
         data_len      => 18,
         status_ch_pos => 0,
