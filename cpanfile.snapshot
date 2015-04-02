@@ -52,6 +52,20 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 6.36
       Test::More 0.96
+  Math-Decimal-0.003
+    pathname: Z/ZE/ZEFRAM/Math-Decimal-0.003.tar.gz
+    provides:
+      Math::Decimal 0.003
+    requirements:
+      Carp 0
+      Exporter 0
+      Module::Build 0
+      Params::Classify 0
+      Test::More 0
+      parent 0
+      perl 5.006
+      strict 0
+      warnings 0
   Mozilla-CA-20141217
     pathname: A/AB/ABH/Mozilla-CA-20141217.tar.gz
     provides:
@@ -60,3 +74,17 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test 0
       perl 5.006
+  Params-Classify-0.013
+    pathname: Z/ZE/ZEFRAM/Params-Classify-0.013.tar.gz
+    provides:
+      Params::Classify 0.013
+    requirements:
+      Exporter 0
+      ExtUtils::ParseXS 2.2006
+      Module::Build 0
+      Scalar::Util 1.01
+      Test::More 0
+      parent 0
+      perl 5.006001
+      strict 0
+      warnings 0
