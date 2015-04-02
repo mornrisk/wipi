@@ -36,7 +36,7 @@ sub transmit {
         $last_weight    = $weight;
         $last_hms       = $hms;
     }else{
-        warn 'weight transmit failed' if $res->code != 200;
+        warn 'weight transmit failed';
     }
 }
 
