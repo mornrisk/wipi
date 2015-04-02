@@ -6,6 +6,7 @@ use Config::PL;
 use Furl;
 use Device::SerialPort;
 use Math::Decimal qw/is_dec_number dec_canonise/;
+use Time::Piece;
 
 use constant READ_SIZE => 512;
 use utf8;
@@ -44,17 +45,23 @@ while (1){
     $idx = rindex($buff, $config->{protocol}->{delimiter});
     next if $idx < $config->{protocol}->{data_len} - 1;
 
+    $port->purge_rx;
     $buff = substr($buff, $idx - $config->{protocol}->{data_len} + 1);
     $is_stable = substr($buff, $config->{protocol}->{status_ch_pos}, 1) 
                     eq $config->{protocol}->{stable_ch} ? 1 : 0;
     $buff = substr($buff, $config->{protocol}->{weight_start}, $config->{protocol}->{weight_len}); 
     $buff =~ s/ /0/g;
-    next unless is_dec_number($buff);
+    if (!is_dec_number($buff) or  $buff > 99999){
+        $buff = '';
+        next;
+    }
     $weight = dec_canonise($buff);
 
     transmit($is_stable, $weight);
 
     if ($config->{output}){
+        my $t = localtime;
+        print $t->hms(':'). ' ';
         print $is_stable ? 'S' : 'U';
         print "$weight\n";
     }

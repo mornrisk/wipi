@@ -8,7 +8,7 @@
         parity    => 'even',    # even / odd / none
         databits  => 7,
         stopbits  => 1,
-        handshake => 'none',    # none / rts / xoff
+        handshake => 'rts',    # none / rts / xoff
     },
     protocol  => +{
         is_stream     => 1,
